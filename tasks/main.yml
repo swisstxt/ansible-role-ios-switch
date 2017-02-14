@@ -1,0 +1,15 @@
+---
+- name: create a ios config from a template
+  template:
+    src: "{{ ios_switch_config_template }}"
+    dest: "{{ ios_switch_config_src }}"
+  notify: copy running-config startup-config
+
+- name: push config from a file
+  ios_config:
+    src: "{{ ios_switch_config_src }}"
+    host: "{{ ios_switch_conn_host }}"
+    username: "{{ ios_switch_conn_username }}"
+    password: "{{ ios_switch_conn_password }}"
+    authorize: "{{ ios_switch_conn_authorize }}"
+    auth_pass: "{{ ios_switch_conn_auth_pass }}"

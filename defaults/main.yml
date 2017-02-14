@@ -1,0 +1,12 @@
+---
+ios_switch_hostname: "{{ inventory_hostname_short }}"
+ios_switch_conn_host: "{{ inventory_hostname }}"
+ios_switch_conn_username: "cisco"
+ios_switch_conn_password: ""
+ios_switch_conn_authorize: false
+ios_switch_conn_auth_pass: null
+ios_switch_config_template: ios_tempalte.conf.j2
+ios_switch_config_src: /tmp/ios_switches_{{ ios_switch_conn_host }}.conf
+ios_switch_configs:
+- ntp server 0.pool.ntp.org
+- ntp server 1.pool.ntp.org

@@ -1,0 +1,36 @@
+hostname {{ ios_switch_hostname }}
+!
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+boot-start-marker
+boot-end-marker
+!
+no aaa new-model
+clock timezone CET 1 0
+clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00
+!
+system mtu routing 1500
+!
+vtp mode transparent
+!
+ip dhcp snooping
+no ip domain-lookup
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+no ip http server
+no ip http secure-server
+logging esm config
+!
+{% for ios_switch_config in ios_switch_configs %}
+{{ ios_switch_config }}
+{% endif %}

@@ -1,0 +1,9 @@
+- name: copy running-config startup-config
+  ios_command:
+    commands:
+    - "copy running-config startup-config\r"
+    host: "{{ ios_switch_conn_host }}"
+    username: "{{ ios_switch_conn_username }}"
+    password: "{{ ios_switch_conn_password }}"
+    authorize: "{{ ios_switch_conn_authorize }}"
+    auth_pass: "{{ ios_switch_conn_auth_pass }}"
